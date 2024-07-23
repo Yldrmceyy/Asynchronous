@@ -2,7 +2,10 @@
 
 This project fetches and displays information about countries using the REST Countries API. It provides details such as the country's flag, name, region, population, language, and currency.
 
+##
+
 ![Screenshot](/ss.jpg)
+
 ## Features
 
 - Fetches data from the REST Countries API.
