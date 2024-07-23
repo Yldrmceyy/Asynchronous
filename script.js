@@ -12,6 +12,9 @@ const getCountryData = function (country) {
     const [data] = JSON.parse(this.responseText);
     console.log(data);
 
+    const language = data.languages ? Object.values(data.languages)[0] : 'No data';
+    const currency = data.currencies ? Object.values(data.currencies)[0].name : 'No data';
+
     const HTML = `<article class="country">
           <img class="country__img" src="${data.flags.png}" />
           <div class="country__data">
@@ -20,20 +23,18 @@ const getCountryData = function (country) {
             <p class="country__row"><span>👫</span>${(
               +data.population / 1000000
             ).toFixed(1)}</p>
-            <p class="country__row"><span>🗣️</span>${data.languages.por}</p>
+            <p class="country__row"><span>🗣️</span>${language}</p>
             <p class="country__row"><span>💰</span>${
-              data.currencies.EUR.name
+              currency
             }</p>
           </div>
         </article> `;
-    countriesContainer.insertAdjacentHTML('beforebegin', HTML);
+    countriesContainer.insertAdjacentHTML('beforeend', HTML);
     countriesContainer.style.opacity = 1;
   });
 };
+
 getCountryData('portugal');
-
+getCountryData('usa');
 getCountryData('germany');
-
-
-
 
