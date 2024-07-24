@@ -66,19 +66,22 @@ const renderCountry = function (data, className = '') {
 
 //Consuming Promise with FETCH API
 const getCountryData = function (country) {
-
-  //Country 1
+  //country 1
   fetch(`https://restcountries.com/v3.1/name/${country}`)
     .then(response => response.json())
-    .then(data => renderCountry(data[0]));
+    .then(data => {
+      renderCountry(data[0]);
+      const neighbour = data[0].borders?.[0];
+      if (!neighbour) return;
 
-    const neighbour=data[0].borders?.[0];
-
-    if(!neighbour) return;
-
-    //Country 2
-    
+      // Fetch neighboring country data
+      //country 2
+      return fetch(`https://restcountries.com/v3.1/alpha/${neighbour}`);
+    })
+    .then(response => response.json())
+    .then(data => renderCountry(data[0],'neighbour'))
+    .catch(err => console.error(`Something went wrong: ${err.message}`));
 };
-getCountryData('portugal');
+
 getCountryData('usa');
-getCountryData('germany');
+
