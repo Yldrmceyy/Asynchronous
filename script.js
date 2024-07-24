@@ -71,3 +71,5 @@ const getCountryData = function (country) {
     .then(data => renderCountry(data[0]));
 };
 getCountryData('portugal');
+getCountryData('usa');
+getCountryData('germany');
