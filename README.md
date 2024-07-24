@@ -5,6 +5,7 @@ This project fetches and displays information about countries using the REST Cou
 ##
 
 ![Screenshot](/ss.jpg)
+![Screenshot](/ss1.jpg)
 
 ## Features
 
